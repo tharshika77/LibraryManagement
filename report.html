@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Library Reports</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/report.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+</head>
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="Primary Navigation">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="members.html">Members</a></li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="report.html" aria-current="page">Reports</a></li>
+    </ul>
+  </nav>
+
+  <main class="container" role="main">
+    <header>
+      <h1>Library Reports</h1>
+    </header>
+
+    <!-- Summary Cards -->
+    <section class="report-summary" aria-label="Summary statistics">
+      <div class="card">
+        <h3>Total Books</h3>
+        <p id="reportBooks" aria-live="polite">--</p>
+      </div>
+      <div class="card">
+        <h3>Total Members</h3>
+        <p id="reportMembers" aria-live="polite">--</p>
+      </div>
+      <div class="card">
+        <h3>Active Loans</h3>
+        <p id="reportLoans" aria-live="polite">--</p>
+      </div>
+      <div class="card">
+        <h3>Overdue Loans</h3>
+        <p id="reportOverdue" aria-live="polite">--</p>
+      </div>
+    </section>
+
+    <!-- Chart Section -->
+    <section aria-label="Loan Activity Chart" class="chart-section">
+      <h2>Loan Activity</h2>
+      <canvas id="loanChart" width="600" height="300" role="img" aria-describedby="loanChartDesc"></canvas>
+      <p id="loanChartDesc" class="sr-only">Chart showing loan activity over time.</p>
+    </section>
+
+    <!-- Table for Most Borrowed Books -->
+    <section aria-label="Top Borrowed Books Table" class="top-books-section">
+      <h2>Top Borrowed Books</h2>
+      <table id="topBooksTable" class="data-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Times Borrowed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JavaScript will insert rows here -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/report.js" defer></script>
+</body>
+</html>

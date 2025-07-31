@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('../img/lib_back.webp'); /* change path if needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7); /* semi-transparent dark background */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* shadow effect */
+  border-radius: 10px;
+  color: white;
+}
+
+.container h1,
+.container h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+
+.member-buttons button {
+  width: auto;         /* or a fixed width like 150px */
+  padding: 10px 20px;  /* more horizontal padding for a better look */
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 10px;      /* horizontal margin for spacing */
+}
+
+
+button:hover {
+  background-color: #45a049;
+}
+
+#membersTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#membersTable th,
+#membersTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#membersTable th {
+  background-color: #4CAF50;
+  color: white;
+}
+@media (max-width: 640px) {
+  .container {
+    width: 95%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+  button {
+    font-size: 16px;
+  }
+  input {
+    font-size: 16px;
+  }
+}

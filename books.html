@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Management</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/books.css" />
+  <script defer src="js/books.js"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="members.html">Members</a></li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="report.html">Reports</a></li>
+    </ul>
+  </nav>
+
+  <h1>Book Management</h1>
+
+  <!-- Section Buttons -->
+  <div class="book-buttons">
+    <button onclick="showSection('addBook')">Add New Book</button>
+    <button onclick="showSection('viewBooks')">View All Books</button>
+    <button onclick="showSection('searchBooks')">Search/Filter Books</button>
+  </div>
+
+  <div class="book-section">
+
+    <!-- Add Book -->
+    <div id="addBook" class="section" style="display:none;">
+      <h2>Add New Book</h2>
+      <form id="addBookForm">
+        <label>Title: <input type="text" id="title" required /></label><br />
+        <label>Author: <input type="text" id="author" required /></label><br />
+        <label>Genre: <input type="text" id="genre" required /></label><br />
+        <label>ISBN: <input type="text" id="isbn" required /></label><br />
+        <label>Publication Year: <input type="number" id="year" required /></label><br />
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+
+    <!-- View All Books -->
+    <div id="viewBooks" class="section" style="display:none;">
+      <h2>All Books</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Title</th><th>Author</th><th>Genre</th><th>ISBN</th><th>Year</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="booksTable">
+          <!-- JavaScript will populate this table -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Search/Filter Books -->
+    <div id="searchBooks" class="section" style="display:none;">
+      <h2>Search Books</h2>
+      <input type="text" id="searchInput" placeholder="Search by title or author" oninput="searchBooks()" />
+      <ul id="searchResults"></ul>
+    </div>
+
+  </div>
+</body>
+</html>

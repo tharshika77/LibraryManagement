@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loan Management</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/loan.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="members.html">Members</a></li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="report.html">Reports</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Loan Management</h1>
+
+    <!-- Loan a Book -->
+    <section>
+      <h2>Issue Book</h2>
+      <form id="loanForm">
+        <label for="loanBookISBN">Book ISBN:
+          <input type="text" id="loanBookISBN" name="loanBookISBN" required />
+        </label>
+        <label for="loanMemberID">Member ID:
+          <input type="text" id="loanMemberID" name="loanMemberID" required />
+        </label>
+        <label for="loanDate">Loan Date:
+          <input type="date" id="loanDate" name="loanDate" required />
+        </label>
+        <label for="dueDate">Due Date:
+          <input type="date" id="dueDate" name="dueDate" required />
+        </label>
+        <button type="submit">Issue Book</button>
+      </form>
+    </section>
+
+    <!-- All Active Loans -->
+    <section>
+      <h2>Active Loans</h2>
+      <table id="loansTable" border="1">
+        <thead>
+          <tr>
+            <th>Book ISBN</th>
+            <th>Member ID</th>
+            <th>Loan Date</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Return</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="js/loans.js"></script>
+</body>
+</html>

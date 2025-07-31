@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Library Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/books.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="members.html">Members</a></li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="report.html">Reports</a></li>
+    </ul>
+  </nav>
+
+  <div class="overlay">
+    <h1>Welcome to the Library Management System</h1>
+
+    <div class="dashboard">
+      <div class="card">
+        <h3>Total Books</h3>
+        <p id="totalBooks">245</p>
+      </div>
+      <div class="card">
+        <h3>Total Members</h3>
+        <p id="totalMembers">120</p>
+      </div>
+      <div class="card">
+        <h3>Active Loans</h3>
+        <p id="activeLoans">68</p>
+      </div>
+      <div class="card">
+        <h3>Overdue Loans</h3>
+        <p id="overdueLoans">9</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/library.js"></script>
+</body>
+</html>
