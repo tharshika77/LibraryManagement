@@ -1,4 +1,3 @@
-/* Reset & base */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +26,7 @@ body {
   display: flex;
   gap: 20px;
   background-color: #333;
-  padding: 40px 20px; /* reasonable padding */
+  padding: 30px 10px; /* reasonable padding */
   margin-bottom: 5px;
   
   justify-content: flex-end; /* This moves all items to the right */
@@ -44,31 +43,67 @@ body {
   color: #90caf9;
 }
 
-/* Dashboard */
+/* Dashboard 
 .dashboard {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 80px;
-  max-width: 600px;      /* Limits total width */
-  margin: 20px 300px;        /* Centers the grid */
+  max-width: 600px;      /* Limits total width 
+  margin: 20px 300px;        /* Centers the grid 
 }
 
-/* Make cards square */
+
+
+
+
+
 .card {
   background-color: floralwhite;
   color: #333;
+  border: 2px solid black; /* ✅ Black border 
   border-radius: 8px;
   box-shadow: 0 0 10px #ccc;
   padding: 20px;
   text-align: center;
-  
-  /* Make height equal to width */
+
+  /* Make height equal to width 
   aspect-ratio: 1 / 1;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+}*/
+
+.dashboard {
+  display: flex;
+  justify-content: center;  /* horizontal center */
+  align-items: flex-start;  /* align cards at the top */
+  gap: 40px;
+  max-width: 1000px;
+  margin: 40px auto;        /* vertical margin instead of height */
+  flex-wrap: nowrap;        /* keep cards in one row */
+  overflow-x: auto;
+  padding: 20px;
 }
+
+
+.card {
+  background-color: floralwhite;
+  color: #333;
+  border: 2px solid black;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+  padding: 20px;
+  text-align: center;
+  width: 200px;          /* increased width */
+  height: 200px;         /* increased height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+
 
 .card h3 {
   margin-bottom: 10px;
@@ -80,3 +115,17 @@ body {
   font-weight: bold;
 }
 
+.overlay {
+  background-color: transparent;  /* No overlay, keeps image clear */
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.welcome-text {
+  margin-right: 550px;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-top: 10px;
+  margin-left: 20px;
+}
