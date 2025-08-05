@@ -94,3 +94,17 @@ button:hover {
     font-size: 16px;
   }
 }
+
+button[type="submit"] {
+  width: 200px;      /* Set the width */
+  height: 50px;      /* Set the height */
+  font-size: 18px;   /* Increase text size */
+  padding: 10px 20px; /* Optional: add space inside */
+  border-radius: 10px;
+  margin-top: 15px;
+  background-color: #4CAF50;
+}
+
+button[type="submit"]:hover {
+background-color: #fff;
+}
