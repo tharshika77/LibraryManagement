@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   async function loadReportData() {
     try {
+      loadSummaryCards();
+
       const summaryData = await fetchSummaryData();
       updateSummaryCards(summaryData);
 
@@ -103,6 +105,27 @@ document.addEventListener("DOMContentLoaded", () => {
       tableBody.appendChild(row);
     });
   }
+
+  async function loadSummaryCards() {
+  try {
+    const res = await fetch('/api/reports/summary');
+    if (!res.ok) throw new Error('Failed to load summary');
+    const s = await res.json(); // { totalBooks, totalMembers, activeLoans, overdueLoans }
+
+    // update the cards
+    document.getElementById('reportBooks').textContent   = s.totalBooks ?? 0;
+    document.getElementById('reportMembers').textContent = s.totalMembers ?? 0;
+    document.getElementById('reportLoans').textContent   = s.activeLoans ?? 0;
+    document.getElementById('reportOverdue').textContent = s.overdueLoans ?? 0;
+  } catch (e) {
+    console.warn('Summary load error:', e);
+    // keep the UI from looking empty
+    document.getElementById('reportBooks').textContent   = '--';
+    document.getElementById('reportMembers').textContent = '--';
+    document.getElementById('reportLoans').textContent   = '--';
+    document.getElementById('reportOverdue').textContent = '--';
+  }
+}
 
   loadReportData();
 });

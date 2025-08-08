@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Book issued successfully.');
       loanForm.reset();
       await loadLoans();
-      await loadFines();
+      //await loadFines();
 
     } catch (error) {
       alert('Error: ' + error.message);
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         alert('Book returned successfully.');
         await loadLoans();
-        await loadFines();
+        //await loadFines();
 
       } catch (error) {
         alert('Error: ' + error.message);
@@ -146,5 +146,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // === Initial load ===
   loadLoans();
-  loadFines();
+  //loadFines();
 });

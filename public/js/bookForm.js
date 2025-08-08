@@ -37,29 +37,43 @@ function renderBooksTable(books) {
 }
 
 // Add Book - send data to backend
-document.getElementById('addBookForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const newBook = {
-    title: this.title.value,
-    author: this.author.value,
-    genre: this.genre.value,
-    isbn: this.isbn.value,
-    pub_year: parseInt(this.year.value),
-  };
-  try {
-    const response = await fetch('/api/books', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newBook)
-    });
-    if (!response.ok) throw new Error('Failed to add book');
-    alert('Book added successfully!');
-    this.reset();
-    showSection('viewBooks');
-    fetchBooks();
-  } catch (err) {
-    alert(err.message);
-  }
+document.getElementById('addBookForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Just grab the form values
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let publisher_id = document.getElementById('publisher_id').value;
+    let isbn = document.getElementById('isbn').value;
+    let pub_year = document.getElementById('pub_year').value;
+
+    // Make an object to send to backend
+    let bookData = {
+        title: title,
+        author: author,
+        publisher_id: Number(publisher_id),
+        isbn: isbn,
+        pub_year: Number(pub_year)
+    };
+
+    // Send it to backend
+    try {
+        let res = await fetch('/api/books', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookData)
+        });
+
+        let data = await res.json();
+        if (res.ok) {
+            alert('Book added!');
+            e.target.reset();
+        } else {
+            alert('Error: ' + data.error);
+        }
+    } catch (err) {
+        alert('Error: ' + err.message);
+    }
 });
 
 // Edit Book - open form pre-filled (you can create a modal or redirect to edit page)

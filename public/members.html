@@ -6,10 +6,9 @@
   <title>Member Management</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/members.css" />
-  <script defer src="js/members.js"></script>
+  <script defer src="js/membersForm.js"></script>
 </head>
 <body>
-  <!-- Navigation -->
   <nav class="navbar">
     <ul>
       <li><a href="home.html">Home</a></li>
@@ -23,61 +22,63 @@
   <div class="container">
     <h1>Member Management</h1>
 
-    <!-- Main Buttons -->
     <div class="member-buttons" style="text-align:center; margin-bottom:20px;">
       <button id="btnAdd">Add New Member</button>
       <button id="btnView">View All Members</button>
       <button id="btnSearch">Search Members</button>
     </div>
 
-    <!-- Add Member Form -->
+    <!-- Add Member -->
     <section id="addMember" class="section" style="display:none;">
       <h2>Add New Member</h2>
       <form id="memberForm">
-        <label for="memberId">Member ID:</label>
-        <input type="text" id="memberId" required placeholder="Enter member ID" />
-
         <label for="memberName">Name:</label>
         <input type="text" id="memberName" required placeholder="Enter full name" />
 
         <label for="memberEmail">Email:</label>
-        <input type="email" id="memberEmail" required placeholder="Enter email" />
+        <input type="email" id="memberEmail" placeholder="Enter email" />
+
+        <label for="memberType">Member Type:</label>
+        <select id="memberType">
+          <option value="Student" selected>Student</option>
+          <option value="Faculty">Faculty</option>
+          <option value="Guest">Guest</option>
+        </select>
+
+        <label for="memberAddress">Address:</label>
+        <input type="text" id="memberAddress" placeholder="Enter address" />
 
         <label for="memberPhone">Phone:</label>
-        <input type="text" id="memberPhone" required placeholder="Enter phone number" />
+        <input type="text" id="memberPhone" placeholder="Enter phone number" />
 
         <button type="submit">Add Member</button>
       </form>
     </section>
 
-    <!-- View All Members Table -->
+    <!-- View Members -->
     <section id="viewMembers" class="section" style="display:none;">
       <h2>All Members</h2>
       <table id="membersTable" border="1" width="100%" cellspacing="0" cellpadding="8">
         <thead>
           <tr>
             <th>Name</th>
+            <th>Type</th>
             <th>Email</th>
+            <th>Address</th>
             <th>Phone</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Rows inserted by JS -->
-        </tbody>
+        <tbody></tbody>
       </table>
     </section>
 
-    <!-- Search Members -->
+    <!-- Search -->
     <section id="searchMembers" class="section" style="display:none;">
       <h2>Search Members</h2>
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search by name or email"
-        style="width: 100%; padding: 8px; margin-bottom: 12px;"
-      />
-      <ul id="searchResults" style="list-style: none; padding-left: 0; color: white;"></ul>
+      <input id="searchInput" placeholder="Search by name, type, email, or address"
+             style="width:100%; padding:8px; margin-bottom:12px;" />
+      <ul id="searchResults" style="list-style:none; padding-left:0; color:white;"></ul>
     </section>
   </div>
 </body>

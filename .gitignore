@@ -1,0 +1,11 @@
+# Ignore Oracle Wallet
+Wallet_LIBRARYDB/
+
+# Ignore Oracle Instant Client
+instantclient/
+
+# Ignore Node dependencies
+node_modules/
+
+# Ignore environment config files
+.env
