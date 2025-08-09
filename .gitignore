@@ -2,7 +2,7 @@
 Wallet_LIBRARYDB/
 
 # Ignore Oracle Instant Client
-instantclient/
+instantclient_23_9/
 
 # Ignore Node dependencies
 node_modules/
