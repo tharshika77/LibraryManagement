@@ -85,4 +85,31 @@ router.get('/top-books', async (_req, res) => {
   }
 });
 
+router.get('/dashboard-stats', async (req, res) => {
+  try {
+    const conn = await db.getConnection();
+
+    const booksCount = await conn.execute(`SELECT COUNT(*) AS total FROM admin.lms_books`);
+    const membersCount = await conn.execute(`SELECT COUNT(*) AS total FROM admin.lms_members`);
+    const activeLoansCount = await conn.execute(`SELECT COUNT(*) AS total FROM admin.lms_loans WHERE return_date IS NULL`);
+    const overdueLoansCount = await conn.execute(`
+      SELECT COUNT(*) AS total 
+      FROM admin.lms_loans 
+      WHERE return_date IS NULL AND due_date < SYSDATE
+    `);
+
+    await conn.close();
+
+    res.json({
+      totalBooks: booksCount.rows[0][0],
+      totalMembers: membersCount.rows[0][0],
+      activeLoans: activeLoansCount.rows[0][0],
+      overdueLoans: overdueLoansCount.rows[0][0]
+    });
+  } catch (err) {
+    console.error('Dashboard Stats Error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;

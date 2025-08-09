@@ -18,6 +18,7 @@
 }
 
 .book-section {
+  max-width: 1200px;
   padding: 20px;
 }
 
@@ -27,3 +28,16 @@
   border-radius: 10px;
   color: black;
 }
+
+.book-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.book-section th,
+.book-section td {
+  padding: 8px 12px;
+  text-align: left;
+  word-break: break-word;
+}
+

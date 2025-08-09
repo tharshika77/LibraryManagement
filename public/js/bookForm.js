@@ -24,7 +24,6 @@ function renderBooksTable(books) {
       <tr>
         <td>${book.title}</td>
         <td>${book.author}</td>
-        <td>${book.genre}</td>
         <td>${book.isbn}</td>
         <td>${book.pub_year}</td>
         <td>
@@ -38,42 +37,56 @@ function renderBooksTable(books) {
 
 // Add Book - send data to backend
 document.getElementById('addBookForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Just grab the form values
-    let title = document.getElementById('title').value;
-    let author = document.getElementById('author').value;
-    let publisher_id = document.getElementById('publisher_id').value;
-    let isbn = document.getElementById('isbn').value;
-    let pub_year = document.getElementById('pub_year').value;
+  const title = document.getElementById('title').value.trim();
+  const author = document.getElementById('author').value.trim();
+  const publisher_id = Number(document.getElementById('publisher_id').value);
+  const isbn = document.getElementById('isbn').value.trim();
+  const pub_year = Number(document.getElementById('pub_year').value);
 
-    // Make an object to send to backend
-    let bookData = {
-        title: title,
-        author: author,
-        publisher_id: Number(publisher_id),
-        isbn: isbn,
-        pub_year: Number(pub_year)
-    };
+  // super simple checks
+  if (!title || !author || !isbn || !publisher_id || !pub_year) {
+    alert('Please fill out all fields.');
+    return;
+  }
+  if (!Number.isInteger(pub_year) || pub_year < 1450 || pub_year > 2900) {
+    alert('Publication year must be an integer between 1450 and 2900.');
+    return;
+  }
+  if (!Number.isInteger(publisher_id) || publisher_id <= 0) {
+    alert('Publisher ID must be a positive number.');
+    return;
+  }
 
-    // Send it to backend
-    try {
-        let res = await fetch('/api/books', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(bookData)
-        });
+  try {
+    const res = await fetch('/api/books', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, author, publisher_id, isbn, pub_year })
+    });
 
-        let data = await res.json();
-        if (res.ok) {
-            alert('Book added!');
-            e.target.reset();
-        } else {
-            alert('Error: ' + data.error);
-        }
-    } catch (err) {
-        alert('Error: ' + err.message);
+    const data = await res.json();
+
+    if (!res.ok) {
+      // friendlier messages for common Oracle errors
+      if ((data.error || '').includes('ORA-02290')) {
+        alert('Error: Publication year must be between 1450 and 2900.');
+      } else if ((data.error || '').includes('ORA-00001')) {
+        alert('Error: That ISBN already exists.');
+      } else if ((data.error || '').includes('ORA-02291')) {
+        alert('Error: Publisher ID does not exist.');
+      } else {
+        alert('Error: ' + (data.error || 'Failed to add book'));
+      }
+      return;
     }
+
+    alert('Book added!');
+    e.target.reset();
+  } catch (err) {
+    alert('Error: ' + err.message);
+  }
 });
 
 // Edit Book - open form pre-filled (you can create a modal or redirect to edit page)

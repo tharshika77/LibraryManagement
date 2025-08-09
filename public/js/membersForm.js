@@ -31,6 +31,7 @@ function renderMembersTable(members) {
   members.forEach(m => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
+      <td>${m.id ?? ''}</td>
       <td>${m.name ?? ''}</td>
       <td>${m.member_type ?? ''}</td>
       <td>${m.email ?? ''}</td>
